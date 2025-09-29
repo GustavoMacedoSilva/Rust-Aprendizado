@@ -1,1 +1,1 @@
-/home/garch/Desktop/Projetos/Rust/Basicos/guessing_game/target/debug/guessing_game: /home/garch/Desktop/Projetos/Rust/Basicos/guessing_game/src/main.rs
+/home/kyoken/Projetos/Rust-Aprendizado/Basicos/guessing_game/target/debug/guessing_game: /home/kyoken/Projetos/Rust-Aprendizado/Basicos/guessing_game/src/main.rs

@@ -31,4 +31,39 @@ fn main() {
     let mut s = String::from("hello"); //String é alocada na heap
     s.push_str(", world!"); //adiciona uma string ao final de s
     println!("{}", s); //imprime a string
+
+    //----------------------------------------------------------------------
+    let s1 = String::from("hello"); //s1 entra em escopo
+    takes_ownership(s1); //s1 é movida para a função, e não é mais válida aqui
+
+    let x = 5; //x entra em escopo
+    makes_copy(x); //x é copiada para a função, e ainda é válida aqui
+    println!("{}", x); //imprime o valor de x
+//----------------------------------------------------------------------
+
+    let st1 = gives_ownership(); //gives_ownership da o valor do return da função para st1
+
+    let st2 = String::from("hello");
+
+    let st3 = takes_and_gives_back(st2); //st2 é movido para a função takes_and_gives_back, que tambem move o return value para
+                                                          //st3
+
+} // aqui st3 sai do escopo e é droppado, st2 foi movido entao nada acontece, s1 sai do escopo e é droppado tambem
+
+fn takes_ownership(some_string: String) { //some_string entra em escopo
+    println!("{}", some_string);
+} //some_string sai de escopo e a memória é liberada
+
+fn makes_copy(some_integer: i32) { //some_integer entra em escopo
+    println!("{}", some_integer);
+} //some_integer sai de escopo, mas nada acontece pois é um tipo primitivo
+
+fn gives_ownership() -> String{
+    let some_string = String::from("yours");
+    some_string
+}
+
+fn takes_and_gives_back(a_string: String) -> String{
+    //a_string entra no escopo
+    a_string //a_string é rotarnada e é movida para o chamador da função
 }
